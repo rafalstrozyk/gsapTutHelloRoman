@@ -12,3 +12,5 @@ gsap.fromTo(
 		backgroundColor: 'blue'
 	}
 );
+
+gsap.to(frame, 2, { x: 300, delay: 2.5 });

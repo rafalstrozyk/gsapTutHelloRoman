@@ -1,3 +1,8 @@
 const frame = document.querySelector('.frame');
-
-gsap.from(frame, 5, { opacity: 0 });
+// item / time / animation
+gsap.to(frame, 5, {
+	x: 100,
+	y: 200,
+	opacity: 0,
+	backgroundColor: 'pink'
+});

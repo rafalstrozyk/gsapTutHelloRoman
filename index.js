@@ -1,15 +1,17 @@
-const frame = document.querySelectorAll('.frame');
+const frames = document.querySelectorAll('.frame');
 
-let tl = gsap.timeline({delay: 2});
+let tl = gsap.timeline({ delay: 2 });
 
-tl.set(frame, { visibility: 'visible' });
+tl.set(frames, { visibility: 'visible' });
 
-tl.to(frame[0], { duration: 1, x: -50, y: 50 }).to(
-	frame[2],
-	{
-		duration: 1,
-		x: 50,
-		y: -50
-	},
-	'-=1'
-);
+tl.from(frames, { duration: 2, opacity: 0 })
+	.to(frames[0], { duration: 1, x: -50, y: 50 })
+	.to(
+		frames[2],
+		{
+			duration: 1,
+			x: 50,
+			y: -50
+		},
+		'+=5'
+	);

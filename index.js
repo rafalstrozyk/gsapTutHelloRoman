@@ -1,46 +1,20 @@
-const frames = document.querySelectorAll('.frame');
+const tl = gsap.timeline();
 
-let tl = gsap.timeline({ delay: 2 });
+const plant = document.querySelectorAll('.plant');
+const leafs = document.querySelectorAll('.leaf');
+const body = document.getElementsByTagName('body');
+const pot = document.getElementById('Pot');
+const flower = document.getElementById('flower');
+const stem = document.getElementById('stem');
 
-tl.set(frames, { visibility: 'visible' });
+tl.set(body, { backgroundColor: '#111' })
 
-tl.from(frames, { duration: 2, opacity: 0 })
-	.addLabel('moveBoxes')
-	.to(frames[0], { duration: 1, x: -50, y: 50 })
-	.to(
-		frames[2],
-		{
-			duration: 1,
-			x: 50,
-			y: -50
-		},
-		'moveBoxes'
-	)
-	.addLabel('boxesOnSides')
-	.to([frames[0], frames[2]], {
-		duration: 2,
-		backgroundColor: 'hsl(0, 0%, 5%)',
-		borderColor: 'transparent'
-	})
-	.to(
-		frames[0],
-		{
-			duration: 1,
-			x: -300,
-			y: 0
-		},
-		'boxesOnSides'
-	)
-	.to(
-		frames[2],
-		{
-			duration: 1,
-			x: 300,
-			y: 0
-		},
-		'boxesOnSides'
-	)
-	.addLabel('hideBehindBoxes')
-	.set([frames[0], frames[2]], { zIndex: 99 })
-	.to(frames[1], { duration: 2, backgroundColor: 'white' })
-	.to([frames[0], frames[2]], { duration: 5, x: 0 }, 'hideBehindBoxes+=3');
+tl.from(pot, 1, { y: -500 })
+	.addLabel('lightsOn')
+	.to(body, { duration: 1, backgroundColor: '#efd0b1' })
+	.set(stem, { opacity: 1 })
+	.addLabel('grow')
+    .from(stem, 1.5, { scaleY: 0, transformOrigin: '50% 100%' })
+    .fromTo(leafs, { scale: 0.8, opacity: 0 }, { duration: 1, scale: 1, opacity: 1, stagger: 1 })
+	.fromTo(flower.children, { scale: 0.7, opacity: 0 }, { duration: 0.8, scale: 1, opacity: 1, stagger: 0.3 })
+

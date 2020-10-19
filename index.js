@@ -1,4 +1,7 @@
 const frame = document.querySelector('.frame');
+
+gsap.set(frame, { visibility: 'visible' });
+
 // item / time / start:animation / stop:animation
 gsap.fromTo(
 	frame,
